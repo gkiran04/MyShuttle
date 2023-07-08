@@ -11,8 +11,11 @@ pipeline{
     }
 
     stage('code analysis'){
-        steps{
-            sh 'mvn sonar:sonar'
+      steps{
+        withSonarQubeEnv(credentialsId: 'sonar') {
+          sh 'mvn sonar:sonar'
+        }
+            
         }
     }
 
