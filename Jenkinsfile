@@ -11,9 +11,12 @@ pipeline{
     }
 
     stage('code analysis'){
+      environment {
+        SCANNER_HOME = tool 'sonar-scanner'
+      }
       steps{
         withSonarQubeEnv(installationName: 'sonar',credentialsId: 'sonar') {
-          sh 'mvn clean sonar:sonar \
+          sh '${SCANNER_HOME**}**}/bin/sonar-scanner \
           -Dsonar.projectKey=myshuttle \
           -Dsonar.sources=.'
         }
