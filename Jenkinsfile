@@ -13,7 +13,9 @@ pipeline{
     stage('code analysis'){
       steps{
         withSonarQubeEnv(installationName: 'sonar',credentialsId: 'sonar') {
-          sh 'mvn clean sonar:sonar'
+          sh 'mvn clean sonar:sonar \
+          -Dsonar.projectKey=myshuttle \
+          -Dsonar.sources=.'
         }
             
         }
