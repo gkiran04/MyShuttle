@@ -13,7 +13,8 @@ pipeline{
     stage('code analysis'){
       
       steps{
-        environment {
+        script {
+          // requires SonarQube Scanner 2.8+
           scannerHome = tool 'SonarQubeScanner'
         }
         withSonarQubeEnv(credentialsId: 'sonar') {
