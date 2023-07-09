@@ -17,7 +17,7 @@ pipeline{
           // requires SonarQube Scanner 2.8+
           scannerHome = tool 'SonarQubeScanner'
         }
-        withSonarQubeEnv(credentialsId: 'sonar') {
+        withSonarQubeEnv(installationName: 'SonarQubeScanner',credentialsId: 'sonar') {
           sh '${scannerHome}/bin/sonar-scanner \
           -Dsonar.projectKey=myshuttle \
           -Dsonar.sources=.'
