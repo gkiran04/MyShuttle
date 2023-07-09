@@ -16,7 +16,7 @@ pipeline{
         environment {
           scannerHome = tool 'SonarQubeScanner'
         }
-        withSonarQubeEnv(installationName: 'sonar',credentialsId: 'sonar') {
+        withSonarQubeEnv(credentialsId: 'sonar') {
           sh '${scannerHome}/bin/sonar-scanner \
           -Dsonar.projectKey=myshuttle \
           -Dsonar.sources=.'
